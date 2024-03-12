@@ -1,19 +1,10 @@
-def snail(snail_map):
-    if snail_map[0]:
-        for i in snail_map:
-            if len(i) >= 3:
-                pass
-            else:
-                return i
-
-        answer = []
-        first_line, other = snail_map[0], *snail_map
-        answer.extend(first_line)
-        print(other)
-        return answer
-    return []
+from typing import List
 
 
-print(snail([[1, 2, 3],
-             [4, 5, 6],
-             [7, 8, 9]]))
+def twoSum(nums: List[int], target: int) -> List[int]:
+    for count, item in enumerate(nums):
+        if target - item in nums and count != nums.index(target - item):
+            return [count, nums.index(target - item)]
+
+
+print(twoSum([3,3], 6))
