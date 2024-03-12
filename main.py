@@ -1,19 +1,25 @@
-def romanToInt(s: str) -> int:
-    roman_dict = {
-        'I': 1,
-        'V': 5,
-        'X': 10,
-        'L': 50,
-        'C': 100,
-        'D': 500,
-        'M': 1000,
-    }
-    result = 0
-    for i in s:
-        result += roman_dict[i]
-    return result
+from typing import List
 
 
-# Input: s = "MCMXCIV"
-# Output: 1994
-# Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
+class Solution:
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+        string = []
+        for i in strs:
+            string.append(set(i))
+
+        answer = ''.join(self.rec(string))
+        while answer not in strs[0]:
+            i = answer[:-1]
+            b = answer[-1]
+            answer = b + i
+
+        return answer
+
+    def rec(self, item: list):
+        if len(item) == 2:
+            return item[0] & item[1]
+        return item[0] & self.rec(item[1:])
+
+
+tests = Solution()
+print(tests.longestCommonPrefix(["flower", "flow", "flight"]))
