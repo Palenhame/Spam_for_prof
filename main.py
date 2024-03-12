@@ -1,10 +1,19 @@
-from typing import List
+def romanToInt(s: str) -> int:
+    roman_dict = {
+        'I': 1,
+        'V': 5,
+        'X': 10,
+        'L': 50,
+        'C': 100,
+        'D': 500,
+        'M': 1000,
+    }
+    result = 0
+    for i in s:
+        result += roman_dict[i]
+    return result
 
 
-def twoSum(nums: List[int], target: int) -> List[int]:
-    for count, item in enumerate(nums):
-        if target - item in nums and count != nums.index(target - item):
-            return [count, nums.index(target - item)]
-
-
-print(twoSum([3,3], 6))
+# Input: s = "MCMXCIV"
+# Output: 1994
+# Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
