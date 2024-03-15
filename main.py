@@ -3,17 +3,19 @@ from typing import List
 
 class Solution:
     def longestCommonPrefix(self, strs: List[str]) -> str:
-        string = []
-        for i in strs:
-            string.append(set(i))
+        if strs:
+            string = []
+            for i in strs:
+                string.append(set(i))
 
-        answer = ''.join(self.rec(string))
-        while answer not in strs[0]:
-            i = answer[:-1]
-            b = answer[-1]
-            answer = b + i
+            answer = ''.join(self.rec(string))
+            while answer not in strs[0]:
+                i = answer[:-1]
+                b = answer[-1]
+                answer = b + i
 
-        return answer
+            return answer
+        return ''
 
     def rec(self, item: list):
         if len(item) == 2:
@@ -22,4 +24,4 @@ class Solution:
 
 
 tests = Solution()
-print(tests.longestCommonPrefix(["flower", "flow", "flight"]))
+print(tests.longestCommonPrefix([""]))
