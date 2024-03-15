@@ -1,27 +1,15 @@
-from typing import List
+from typing import List, Optional
 
 
 class Solution:
-    def longestCommonPrefix(self, strs: List[str]) -> str:
-        if strs:
-            string = []
-            for i in strs:
-                string.append(set(i))
-
-            answer = ''.join(self.rec(string))
-            while answer not in strs[0]:
-                i = answer[:-1]
-                b = answer[-1]
-                answer = b + i
-
-            return answer
-        return ''
-
-    def rec(self, item: list):
-        if len(item) == 2:
-            return item[0] & item[1]
-        return item[0] & self.rec(item[1:])
+    def isPowerOfFour(self, n: int) -> bool:
+        for i in range(n + 1):
+            if i ** 4 == n:
+                return True
+            pass
+        return False
 
 
 tests = Solution()
-print(tests.longestCommonPrefix([""]))
+print(tests.isPowerOfFour(1))
+# print(tests.isValid("([)]"))
